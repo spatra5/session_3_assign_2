@@ -1,0 +1,52 @@
+<!-- 1. Create two public variables and four functions - add, subtract, multiply and divide which
+takes these two public variables and perform their respective operations i.e. add,subtract, multiply and divide.
+2. These functions should also contain a private variable and alert them.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+	
+		function CalculatorFunc(x, y) {
+			this.x = x;	//Public variables
+			this.y = y;
+			
+			var msg = "The result of "; // Private variable
+			this.showResult = function(fn){	//Priviledged function
+				alert(msg + fn.call(this));
+			}			
+		}
+		
+		//Public functions
+		CalculatorFunc.prototype = {	
+			add : function(){
+				return this.x + " + " + this.y + " is : " + (this.x + this.y);
+			},
+			subtract : function(){
+				return this.x + " - " + this.y + " is : " + (this.x - this.y);
+			},
+			multiply : function(){
+				return this.x + " * " + this.y + " is : " + (this.x * this.y);
+			},
+			divide : function(){
+				if(this.y!= 0)
+					return this.x + " / " + this.y + " is : " + (this.x / this.y);
+				else
+					return 'undefined';
+			}		
+		};
+	
+		
+		var result = new CalculatorFunc(5, 10); //Create instance
+		result.showResult(result.add);			//Call respective functions
+		result.showResult(result.subtract);
+		result.showResult(result.multiply);
+		result.showResult(result.divide);
+		
+	</script>
+	
+</head>
+<body>
+	Hello
+</body>
+</html>
